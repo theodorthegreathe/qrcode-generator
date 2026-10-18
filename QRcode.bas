@@ -20,7 +20,8 @@ Attribute VB_Name = "QRCode"
 '
 ' OTHER ENTRY POINTS
 '   DeleteQRCodes                      removes the QR pictures of the selected
-'                                      cells (select all to remove every one)
+'                                      cells
+'   DeleteAllQRCodes                   removes every QR picture on the active sheet
 '   AddQRCode(text, sheet, left, top)  inserts a QR picture from your own code
 '   SaveQRCodeBmp(text, path)          writes the QR code to a .bmp file
 '   QRMatrix(text)                     returns the module matrix (1 = dark)
@@ -128,6 +129,22 @@ Attribute DeleteQRCodes.VB_Description = "Remove the QR codes created for the se
             End If
         End If
     Next
+End Sub
+
+' Removes every QR picture created by this module on the active sheet.
+Public Sub DeleteAllQRCodes()
+Attribute DeleteAllQRCodes.VB_Description = "Remove all QR codes created by InsertQRCode on the active sheet."
+    Dim ws As Worksheet, i As Long, n As Long
+
+    If TypeName(ActiveSheet) <> "Worksheet" Then Exit Sub
+    Set ws = ActiveSheet
+    For i = ws.Shapes.Count To 1 Step -1
+        If Left$(ws.Shapes(i).Name, Len(QR_NAME_PREFIX)) = QR_NAME_PREFIX Then
+            ws.Shapes(i).Delete
+            n = n + 1
+        End If
+    Next
+    MsgBox n & " QR code(s) deleted from sheet """ & ws.Name & """.", vbInformation, "QR code"
 End Sub
 
 '===============================================================================
