@@ -2,7 +2,7 @@
 pure-VBA module that generates QR codes inside Excel, so it works offline. It needs no add-ins, no internet, no references and no API declarations, and runs in both 32- and 64-bit Office. Solo purpose is generation of SPD codes for usage with various EU/EEA banking apps.
 
 
-Kazuhiko Arase's MIT-licensed libraries () were used by Claude code as a reference. All the implementations are based on JIS X 0510:1999.
+Kazuhiko Arase's MIT-licensed libraries (https://github.com/kazuhikoarase/qrcode-generator) were used by Claude code as a reference. All the implementations are based on JIS X 0510:1999.
 
 The word "QR Code" is registered trademark of DENSO WAVE INCORPORATED
 <br/>http://www.denso-wave.com/qrcode/faqpatent-e.html
